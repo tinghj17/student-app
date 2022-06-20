@@ -2,7 +2,7 @@ import React from "react";
 import "./StudentList.css";
 import Student from "./Student";
 
-const StudentList = () => {
+const StudentList = (props) => {
   //[
   //   <li>
   //     <Student name="Ada" email="ada@dev.org"></Student>
@@ -14,25 +14,15 @@ const StudentList = () => {
   //     <Student name="Chrissy" email="chrissy@dev.org"></Student>
   //   </li>,
   // ];
-  const studentData = [
-    {
-      nameData: "Ada",
-      emailData: "ada@dev.org",
-    },
-    {
-      nameData: "Soo-ah",
-      emailData: "sooah@dev.org",
-    },
-    {
-      nameData: "Chrissy",
-      emailData: "chrissy@dev.org",
-    },
-  ];
 
-  const studentComponents = studentData.map((student) => {
+  const studentComponents = props.students.map((student, index) => {
     return (
-      <li>
-        <Student name={student.nameData} email={student.emailData}></Student>
+      <li key={index}>
+        <Student 
+        name={student.nameData} 
+        email={student.emailData}
+        >
+        </Student>
       </li>
     );
   });
