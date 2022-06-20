@@ -6,8 +6,8 @@ function App() {
   return (
     <main>
       <h1>Attendace</h1>
-      <StudentList></StudentList>
       <ClassInfo/>
+      <StudentList></StudentList>
     </main>
   );
 }
