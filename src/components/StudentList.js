@@ -1,7 +1,7 @@
 import React from "react";
 import "./StudentList.css";
 import Student from "./Student";
-
+import PropTypes from "prop-types";
 
 const StudentList = (props) => {
   //[
@@ -16,14 +16,16 @@ const StudentList = (props) => {
   //   </li>,
   // ];
 
-  const studentComponents = props.students.map((student, index) => {
+  const studentComponents = props.students.map((student) => {
     return (
-      <li key={index}>
-        <Student 
-        name={student.nameData} 
-        email={student.emailData}
-        >
-        </Student>
+      <li key={student.id}>
+        <Student
+          id={student.id}
+          name={student.nameData}
+          email={student.emailData}
+          isPresent={student.isPresentData}
+          onUpdate={props.onUpdateStudent}
+        ></Student>
       </li>
     );
   });
@@ -36,4 +38,15 @@ const StudentList = (props) => {
   );
 };
 
+StudentList.propTypes = {
+  students: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      nameData: PropTypes.string.isRequired,
+      emailData: PropTypes.string.isRequired,
+      isPresentData: PropTypes.bool,
+    })
+  ),
+  onUpdateStudent: PropTypes.func.isRequired,
+};
 export default StudentList;
